@@ -22,17 +22,54 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <TextInput placeholder="Username" value={username} onChangeText={setUsername} style={styles.input} />
-      <TextInput placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry style={styles.input} />
-      <Button title="Login" onPress={handleLogin} />
-      <Button title="Go to Signup" onPress={() => navigation.navigate('Signup')} />
+      <Text style={styles.welcome}>Welcome to Notes</Text>
+      <TextInput
+        placeholder="Username"
+        value={username}
+        onChangeText={setUsername}
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        style={styles.input}
+      />
+      <View style={styles.buttonWrapper}>
+        <Button title="Login" onPress={handleLogin} />
+      </View>
+      <View style={styles.buttonWrapper}>
+        <Button title="Go to Signup" onPress={() => navigation.navigate('Signup')} />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', padding: 20 },
-  title: { fontSize: 32, textAlign: 'center', marginBottom: 20 },
-  input: { borderWidth: 1, padding: 10, marginVertical: 10, borderRadius: 8 },
+  container: {
+    flex: 1,
+    backgroundColor: '#FFF8CF',
+    justifyContent: 'center',
+    padding: 20
+  },
+  welcome: {
+    fontSize: 32,
+    textAlign: 'center',
+    marginBottom: 40,
+    color: '#B38700',
+    fontWeight: '700'
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#E5C200',
+    backgroundColor: '#FFF3A6',
+    padding: 12,
+    marginVertical: 10,
+    borderRadius: 10,
+    fontSize: 16
+  },
+  buttonWrapper: {
+    marginTop: 10
+  }
 });
