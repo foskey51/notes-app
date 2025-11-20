@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text, Alert, StyleSheet } from 'react-native';
+import { View, TextInput, Text, Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { storage } from '../services/storage';
 
 export default function SignupScreen({ navigation }) {
@@ -19,17 +19,84 @@ export default function SignupScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Sign Up</Text>
-      <TextInput placeholder="Choose Username" value={username} onChangeText={setUsername} style={styles.input} />
-      <TextInput placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry style={styles.input} />
-      <Button title="Create Account" onPress={handleSignup} />
+
+      <TextInput
+        placeholder="Choose Username"
+        value={username}
+        onChangeText={setUsername}
+        style={styles.input}
+      />
+
+      <TextInput
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        style={styles.input}
+      />
+
+      <View style={styles.buttonWrapper}>
+        <TouchableOpacity style={styles.button} onPress={handleSignup}>
+          <Text style={styles.buttonText}>Create Account</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.secondaryButton} onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.secondaryButtonText}>Back to Login</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
-
-
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', padding: 20 },
-  title: { fontSize: 32, textAlign: 'center', marginBottom: 20 },
-  input: { borderWidth: 1, padding: 10, marginVertical: 10, borderRadius: 8 },
+  container: {
+    flex: 1,
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
+    padding: 20
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: '700',
+    textAlign: 'center',
+    marginBottom: 40,
+    color: '#000'
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#CCC',
+    backgroundColor: '#F7F7F7',
+    padding: 14,
+    marginVertical: 10,
+    borderRadius: 10,
+    fontSize: 16
+  },
+  buttonWrapper: {
+    marginTop: 20,
+    gap: 12
+  },
+  button: {
+    backgroundColor: '#000',
+    paddingVertical: 14,
+    borderRadius: 10,
+    alignItems: 'center'
+  },
+  buttonText: {
+    color: '#FFF',
+    fontSize: 17,
+    fontWeight: '700'
+  },
+  secondaryButton: {
+    backgroundColor: '#FFF',
+    borderWidth: 1,
+    borderColor: '#000',
+    paddingVertical: 14,
+    borderRadius: 10,
+    alignItems: 'center'
+  },
+  secondaryButtonText: {
+    color: '#000',
+    fontSize: 17,
+    fontWeight: '700'
+  }
 });
